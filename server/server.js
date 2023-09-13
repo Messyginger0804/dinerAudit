@@ -1,7 +1,8 @@
 require("dotenv").config();
 const express = require('express');
 const morgan = require('morgan');
-import db = from './db';
+// import db = from './db';
+const db = require('./db');
 const app = express();
 // app.use(morgan("dev"))
 
