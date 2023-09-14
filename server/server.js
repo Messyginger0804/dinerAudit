@@ -14,40 +14,60 @@ app.use(express.json());
 
 // get all restaurants
 app.get('/api/v1/restaurants', async (req, res) => {
-    const results = await db.query("SELECT * FROM restaurant")
-
     console.log(results)
-    res.status(200).json({
-        status: 'success',
-        data: {
-            restaurant: ['wendys', 'kfc']
+    try {
+        const results = await db.query("SELECT * FROM restaurant")
+        res.status(200).json({
+            status: 'success',
+            data: {
+                results: results.rows.length,
+                restaurants: results.rows
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
 
-        }
-    })
 })
 
 // get single restaurant
-app.get('/api/v1/restaurants/:id', (req, res) => {
-    console.log(req)
+app.get('/api/v1/restaurants/:id', async (req, res) => {
+    console.log(req.params.id)
+    try {
+        const results = await db.query("SELECT name FROM restaurant WHERE id = $1", [req.params.id])
+        res.status(200).json({
+            status: 'sucess',
+            data: {
+                restaurants: results.rows[0]
+            }
+        });
 
-    res.status(200).json({
-        status: 'OK',
-        data: {
-            restaurants: "wendys"
-        }
-    });
+        console.log(results);
+    } catch (error) {
+        console.log(error);
+    }
 })
 
 // Create a new restaurant`
-app.post('/api/v1/restaurants', (req, res) => {
-    console.log(req)
+app.post('/api/v1/restaurants', async (req, res) => {
+    console.log(req.body)
 
-    res.status(201).json({
-        status: 'OK',
-        data: {
-            restaurants: "wendys"
-        }
-    });
+    try {
+        const result = await db.query(`
+        INSERT INTO restaurant 
+        (name, location, price_range) values ($1, $2, $3) RETURNING *`,
+            [req.body.name, req.body.location, req.body.price_range])
+
+        res.status(201).json({
+            status: 'success',
+            data: {
+                restaurants: results.rows[0]
+            }
+        });
+        console.log(results)
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 // update a restaurant
