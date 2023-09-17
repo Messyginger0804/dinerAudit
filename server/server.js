@@ -14,9 +14,9 @@ app.use(express.json());
 
 // get all restaurants
 app.get('/api/v1/restaurants', async (req, res) => {
-    console.log(results)
     try {
         const results = await db.query("SELECT * FROM restaurant")
+        console.log(results)
         res.status(200).json({
             status: 'success',
             data: {
@@ -71,7 +71,6 @@ app.post('/api/v1/restaurants', async (req, res) => {
 })
 
 // update a restaurant
-
 app.put('/api/v1/restaurants/:id', async (req, res) => {
     try {
         const results = await db.query(
@@ -92,10 +91,9 @@ app.put('/api/v1/restaurants/:id', async (req, res) => {
 
 
 // delete restaurant
-
-app.delete('api/restaurants/:id', async (req, res) => {
+app.delete('/api/v1/restaurants/:id', async (req, res) => {
     try {
-        const results = db.query(`DELETE FROM restaurant WHERE id =$1`, [req.params.id])
+        const results = await db.query(`DELETE FROM restaurant WHERE id = $1`, [req.params.id])
         res.status(204).json({
             status: 'OK',
         })
