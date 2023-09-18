@@ -7,7 +7,7 @@ import Home from './pages/Home';
 
 function App() {
   return (
-    <>
+    <main>
       <BrowserRouter>
         <Routes>
           <Route path="/" Component={Home} />
@@ -17,7 +17,7 @@ function App() {
           <Route path='/restaurants/:id' Component={DetailPage} />
         </Routes>
       </BrowserRouter>
-    </>
+    </main>
   )
 }
 

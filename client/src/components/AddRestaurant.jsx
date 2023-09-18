@@ -1,7 +1,7 @@
 
 function AddRestaurant() {
     return (
-        <div className=''>
+        <main className=''>
 
             <form action='' className=''>
                 <div className='flex text-3xl justify-evenly pt-5'>
@@ -24,7 +24,7 @@ function AddRestaurant() {
                     <button type="button" className="bg-purple-600 rounded p-2 hover:shadow-yellow-100">Add</button>
                 </div>
             </form>
-        </div>
+        </main>
     )
 }
 
