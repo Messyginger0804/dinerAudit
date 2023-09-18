@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+    padding: 0%;
+    margin: 0%;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(ellipse at center, rgb(202, 53, 195) 20%, whitesmoke 80%);
+    /* overflow: scroll; */
+    /* text-decoration-color: whitesmoke; */
+}
+
+main {
+    /* height: 100%; */
+    padding-left: 10%;
+    padding-right: 10%;
+    /* margin: 5%; */
+}
