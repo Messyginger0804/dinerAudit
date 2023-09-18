@@ -1,6 +1,34 @@
 import '../index.css'
+import { useContext, useEffect } from 'react'
+import DinerFinder from '../api/DinerFinder';
+import { RestaurantsContext } from '../context/RestaurantsConext';
+// import axios from 'axios';
 
-function RestaurantLists() {
+function RestaurantLists(props) {
+    const { restaurants, setRestaurants } = useContext(RestaurantsContext);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await DinerFinder.get('/')
+                setRestaurants(response.data.data.restaurants)
+            } catch (error) {
+                console.error(error)
+            }
+
+        }
+        fetchData();
+    }, [])
+
+    // useEffect(async () => {
+    //     try {
+    //         const response = await DinerFinder.get('/')
+    //         console.log(response)
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // }, []);
+
     return (
         <div className='flex flex-col-6 justify-evenly w-full'>
             <table className='border-2 content-center w-full'>
