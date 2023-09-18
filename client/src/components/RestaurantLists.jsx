@@ -43,7 +43,20 @@ function RestaurantLists(props) {
                     </tr>
                 </thead>
                 <tbody className='text-center'>
-                    <tr>
+                    {restaurants?.map((restaurant) => {
+                        return (
+
+                            <tr key={restaurant.id}>
+                                <td>{restaurant.name}</td>
+                                <td>{restaurant.location}</td>
+                                <td>{"*".repeat(restaurant.price_range)}</td>
+                                <td>reviews</td>
+                                <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>edit</button></td>
+                                <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>delete</button></td>
+                            </tr>
+                        )
+                    })}
+                    {/* <tr>
                         <td className='border-2 p-5'>Mcdonalds</td>
                         <td className='border-2 p-5'>Mesquite</td>
                         <td className='border-2 p-5'>$$$$</td>
@@ -66,7 +79,7 @@ function RestaurantLists(props) {
                         <td className='border-2 p-5'>blah-blah-blah</td>
                         <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>edit</button></td>
                         <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>delete</button></td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </table>
         </div>
