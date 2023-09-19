@@ -20,14 +20,22 @@ function RestaurantLists(props) {
         fetchData();
     }, [])
 
-    // useEffect(async () => {
-    //     try {
-    //         const response = await DinerFinder.get('/')
-    //         console.log(response)
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // }, []);
+    const handleDelete = async (id) => {
+        try {
+            const response = await DinerFinder.delete(`/${id}`)
+            // console.log(response)
+            setRestaurants(restaurants.filter(restaurant => {
+                return restaurant.id !== id
+            }))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleEdit = () => {
+        console.log('edit here')
+    }
+
 
     return (
         <div className='flex flex-col-6 justify-evenly w-full'>
@@ -43,7 +51,7 @@ function RestaurantLists(props) {
                     </tr>
                 </thead>
                 <tbody className='text-center'>
-                    {restaurants?.map((restaurant) => {
+                    {restaurants && restaurants.map((restaurant) => {
                         return (
 
                             <tr key={restaurant.id}>
@@ -51,8 +59,8 @@ function RestaurantLists(props) {
                                 <td>{restaurant.location}</td>
                                 <td>{"*".repeat(restaurant.price_range)}</td>
                                 <td>reviews</td>
-                                <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>edit</button></td>
-                                <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>delete</button></td>
+                                <td onClick={() => handleEdit()} className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>edit</button></td>
+                                <td onClick={() => handleDelete(restaurant.id)} className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>delete</button></td>
                             </tr>
                         )
                     })}
