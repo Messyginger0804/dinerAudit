@@ -2,10 +2,13 @@ import '../index.css'
 import { useContext, useEffect } from 'react'
 import DinerFinder from '../api/DinerFinder';
 import { RestaurantsContext } from '../context/RestaurantsConext';
+import { useNavigate } from "react-router-dom";
 // import axios from 'axios';
 
 function RestaurantLists(props) {
     const { restaurants, setRestaurants } = useContext(RestaurantsContext);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -32,7 +35,8 @@ function RestaurantLists(props) {
         }
     }
 
-    const handleEdit = () => {
+    const handleEdit = (id) => {
+        navigate(`/restaurants/${id}/edit`)
         console.log('edit here')
     }
 
@@ -59,7 +63,7 @@ function RestaurantLists(props) {
                                 <td>{restaurant.location}</td>
                                 <td>{"*".repeat(restaurant.price_range)}</td>
                                 <td>reviews</td>
-                                <td onClick={() => handleEdit()} className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>edit</button></td>
+                                <td onClick={() => handleEdit(restaurant.id)} className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>edit</button></td>
                                 <td onClick={() => handleDelete(restaurant.id)} className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>delete</button></td>
                             </tr>
                         )

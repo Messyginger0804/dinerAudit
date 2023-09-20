@@ -9,12 +9,12 @@ import { RestaurantsContextProvider } from './context/RestaurantsConext';
 function App() {
   return (
     <RestaurantsContextProvider>
-      <main>
+      <main className='py-[2%]'>
         <BrowserRouter>
           <Routes>
             <Route path="/" Component={Home} />
 
-            <Route path='/restaurants/:id/update' Component={UpdatePage} />
+            <Route path='/restaurants/:id/edit' Component={UpdatePage} />
 
             <Route path='/restaurants/:id' Component={DetailPage} />
           </Routes>
