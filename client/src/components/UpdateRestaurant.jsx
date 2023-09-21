@@ -2,6 +2,8 @@ import { useState, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { RestaurantsContext } from '../context/RestaurantsConext';
 import DinerFinder from '../api/DinerFinder';
+import { useNavigate } from "react-router-dom";
+
 
 function UpdateRestaurant(props) {
     const { id } = useParams();
@@ -9,6 +11,7 @@ function UpdateRestaurant(props) {
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');
     const [price_range, setPrice_range] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,8 +32,9 @@ function UpdateRestaurant(props) {
             location,
             price_range
         })
+        navigate('/')
         console.log(updateRestaurant)
-        console.log('Updated')
+        // console.log('Updated')
     }
 
     return (
