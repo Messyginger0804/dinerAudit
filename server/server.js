@@ -27,8 +27,8 @@ app.get('/api/v1/restaurants', async (req, res) => {
         // console.log(results)
         res.status(200).json({
             status: 'success',
+            results: results.rows.length,
             data: {
-                results: results.rows.length,
                 restaurants: results.rows
             }
         })
@@ -46,7 +46,7 @@ app.get('/api/v1/restaurants/:id', async (req, res) => {
         res.status(200).json({
             status: 'sucess',
             data: {
-                restaurants: results.rows[0]
+                restaurants: results.rows[0],
             }
         });
 
@@ -61,7 +61,7 @@ app.post('/api/v1/restaurants', async (req, res) => {
     // console.log(req.body)
 
     try {
-        const result = await db.query(`
+        const results = await db.query(`
         INSERT INTO restaurant 
         (name, location, price_range) values ($1, $2, $3) RETURNING *`,
             [req.body.name, req.body.location, req.body.price_range])
@@ -69,7 +69,7 @@ app.post('/api/v1/restaurants', async (req, res) => {
         res.status(201).json({
             status: 'success',
             data: {
-                restaurants: result.rows[0]
+                restaurants: results.rows[0]
             }
         });
         // console.log(results)
@@ -81,11 +81,11 @@ app.post('/api/v1/restaurants', async (req, res) => {
 // update a restaurant
 app.put('/api/v1/restaurants/:id', async (req, res) => {
     try {
-        const results = await db.query(
-            `UPDATE restaurant SET name = $1, location = $2, price_range = $3 WHERE id = $4 RETURNING *`
+        const results = await db.query(`
+        UPDATE restaurant SET name = $1, location = $2, price_range = $3 WHERE id = $4 RETURNING *`,
             [req.body.name, req.body.location, req.body.price_range, req.params.id])
 
-        console.log('=====================', results)
+        // console.log('=====================', results)
         res.status(200).json({
             status: 'OK',
             data: {
@@ -95,6 +95,9 @@ app.put('/api/v1/restaurants/:id', async (req, res) => {
     } catch (error) {
         console.error(error);
     }
+    // console.log(req.params.id)
+    // console.log(req.params)
+    console.log(req.body);
 });
 
 
