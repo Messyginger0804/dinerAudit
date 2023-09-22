@@ -3,6 +3,7 @@ import '../index.css'
 import { useContext, useEffect, useState } from 'react'
 import { RestaurantsContext } from '../context/RestaurantsConext'
 import DinerFinder from '../api/DinerFinder'
+import StarRating from '../components/StarRating'
 
 
 function DetailPage() {
@@ -26,7 +27,7 @@ function DetailPage() {
 
 
     return (
-        <div>{selectedRestaurant && selectedRestaurant.name}</div>
+        <div>{selectedRestaurant && <StarRating rating={1.1} />}</div>
     )
 }
 
