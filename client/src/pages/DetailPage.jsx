@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react'
 import { RestaurantsContext } from '../context/RestaurantsConext'
 import DinerFinder from '../api/DinerFinder'
 import StarRating from '../components/StarRating'
+import Reviews from '../components/Reviews'
 
 
 function DetailPage() {
@@ -27,7 +28,14 @@ function DetailPage() {
 
 
     return (
-        <div>{selectedRestaurant && <StarRating rating={1.1} />}</div>
+        <div>{selectedRestaurant && (
+            <>
+                <div>
+                    <Reviews />
+                </div>
+            </>
+        )}
+        </div>
     )
 }
 
