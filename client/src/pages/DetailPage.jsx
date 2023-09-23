@@ -28,12 +28,13 @@ function DetailPage() {
 
 
     return (
-        <div>{selectedRestaurant && (
-            <>
-                <div>
-                    <Reviews />
-                </div>
-            </>
+        <div className=''>{selectedRestaurant && (
+            // <>
+            <div className='flex'>
+                <Reviews />
+
+            </div>
+            // {/* </> */}
         )}
         </div>
     )

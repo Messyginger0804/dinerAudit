@@ -8,12 +8,12 @@ function StarRating({ rating }) {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
         if (i <= rating) {
-            stars.push(<i><BsStarFill className='flex' key={i} /></i>)
+            stars.push(<i><BsStarFill className='flex text-yellow-500 text-xl' key={i} /></i>)
         } else if (i === Math.ceil(rating) && !Number.isInteger(rating)) {
-            stars.push(<i><BsStarHalf className='flex' key={i} /></i>)
+            stars.push(<i><BsStarHalf className='flex text-yellow-500 text-xl' key={i} /></i>)
         }
         else {
-            stars.push(<i><BsStar className='flex' key={i} /></i>)
+            stars.push(<i><BsStar className='flex text-yellow-500 text-xl' key={i} /></i>)
         }
     }
 
