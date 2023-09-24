@@ -1,16 +1,36 @@
 import e from 'cors';
 import { useState } from 'react'
-import useLocation from 'react-router-dom'
+import {
+    // useLocation, useNavigate, 
+    useParams
+} from 'react-router-dom'
+import DinerFinder from '../api/DinerFinder';
 
 function AddReviews() {
-    const location = useLocation()
-    console(location)
+    const { id } = useParams();
+    // console.log(id)
+    // const location = useLocation();
+    // console.log(location)
+    // const navigate = useNavigate();
     const [name, setName] = useState();
     const [reviewText, setReviewText] = useState();
     const [rating, setRating] = useState();
 
-    const handleSubmitReview = (e) => {
-        e.prevent.default()
+    const handleSubmitReview = async (e) => {
+        // e.preventDefault()
+        try {
+            const response = await DinerFinder.post(`/${id}/addReview`, {
+                name,
+                review: reviewText,
+                rating,
+            })
+            console.log(response)
+        } catch (error) {
+            console.error(error)
+        }
+
+
+        // /api/v1/restaurants/:id/reviews
 
     }
 

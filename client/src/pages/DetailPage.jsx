@@ -32,7 +32,7 @@ function DetailPage() {
             <>
                 <div className='m-6'>
                     <Reviews reviews={selectedRestaurant.reviews} />
-                    {console.log(selectedRestaurant.reviews)}
+                    {/* {console.log(selectedRestaurant.reviews)} */}
                 </div>
                 <AddReviews />
             </>

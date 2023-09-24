@@ -16,9 +16,10 @@ function StarRating({ rating }) {
             stars.push(<i><BsStar className='flex text-yellow-500 text-xl' key={i} /></i>)
         }
     }
+    // const bubble = 123;
 
     return (
-        <span className='flex'>{stars}</span>
+        <span className='flex' key={stars}>{stars}</span>
     )
     // return (
     //     <div>

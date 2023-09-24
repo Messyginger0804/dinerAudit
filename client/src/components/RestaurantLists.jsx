@@ -3,6 +3,7 @@ import { useContext, useEffect } from 'react'
 import DinerFinder from '../api/DinerFinder';
 import { RestaurantsContext } from '../context/RestaurantsConext';
 import { useNavigate } from "react-router-dom";
+import StarRating from './StarRating';
 // import axios from 'axios';
 
 function RestaurantLists(props) {
@@ -14,6 +15,7 @@ function RestaurantLists(props) {
         async function fetchData() {
             try {
                 const response = await DinerFinder.get('/')
+                console.log(response.data.data)
                 setRestaurants(response.data.data.restaurants)
             } catch (error) {
                 console.error(error)
@@ -46,6 +48,14 @@ function RestaurantLists(props) {
         navigate(`/restaurants/${id}/`)
     }
 
+    const showRating = (restaurant) => {
+        return (
+            <>
+                <StarRating rating={restaurant.id} />
+                <span>({restaurant.count}) reviews</span>
+            </>)
+    }
+
 
     return (
         <div className='flex flex-col-6 justify-evenly w-full'>
@@ -54,7 +64,7 @@ function RestaurantLists(props) {
                     <tr className=''>
                         <th scope='col' className=' border-2 p-5'>Restaurant</th>
                         <th scope='col' className=' border-2 p-5'>location</th>
-                        <th scope='col' className=' border-2 p-5'>rating</th>
+                        <th scope='col' className=' border-2 p-5'>price range</th>
                         <th scope='col' className=' border-2 p-5'>review</th>
                         <th scope='col' className=' border-2 p-5'>edit</th>
                         <th scope='col' className=' border-2 p-5'>delte</th>
@@ -64,41 +74,19 @@ function RestaurantLists(props) {
                     {restaurants && restaurants.map((restaurant) => {
                         return (
 
-                            <tr onClick={() => handleRestaurantSelect(restaurant.id)}
+                            <tr className='align-center'
+                                onClick={() => handleRestaurantSelect(restaurant.id)}
                                 key={restaurant.id}>
                                 <td>{restaurant.name}</td>
                                 <td>{restaurant.location}</td>
                                 <td>{"*".repeat(restaurant.price_range)}</td>
-                                <td>reviews</td>
+                                <td className='flex justify-center'>{showRating(restaurant)}</td>
                                 <td onClick={(e) => handleEdit(e, restaurant.id)} className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>edit</button></td>
                                 <td onClick={(e) => handleDelete(e, restaurant.id)} className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>delete</button></td>
                             </tr>
                         )
                     })}
-                    {/* <tr>
-                        <td className='border-2 p-5'>Mcdonalds</td>
-                        <td className='border-2 p-5'>Mesquite</td>
-                        <td className='border-2 p-5'>$$$$</td>
-                        <td className='border-2 p-5'>blah-blah-blah</td>
-                        <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>edit</button></td>
-                        <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>delete</button></td>
-                    </tr>
-                    <tr>
-                        <td className='border-2 p-5'>Mcdonalds</td>
-                        <td className='border-2 p-5'>Mesquite</td>
-                        <td className='border-2 p-5'>$$$$</td>
-                        <td className='border-2 p-5'>blah-blah-blah</td>
-                        <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>edit</button></td>
-                        <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>delete</button></td>
-                    </tr>
-                    <tr>
-                        <td className='border-2 p-5'>Mcdonalds</td>
-                        <td className='border-2 p-5'>Mesquite</td>
-                        <td className='border-2 p-5'>$$$$</td>
-                        <td className='border-2 p-5'>blah-blah-blah</td>
-                        <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>edit</button></td>
-                        <td className='border-2 p-5'><button className='bg-blue-200 rounded p-2'>delete</button></td>
-                    </tr> */}
+
                 </tbody>
             </table>
         </div>
