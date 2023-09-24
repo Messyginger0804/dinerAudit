@@ -1,9 +1,18 @@
+import e from 'cors';
 import { useState } from 'react'
+import useLocation from 'react-router-dom'
 
 function AddReviews() {
+    const location = useLocation()
+    console(location)
     const [name, setName] = useState();
     const [reviewText, setReviewText] = useState();
     const [rating, setRating] = useState();
+
+    const handleSubmitReview = (e) => {
+        e.prevent.default()
+
+    }
 
     return (
         <div className='m-4'>
@@ -47,7 +56,9 @@ function AddReviews() {
                         onChange={(e) => setReviewText(e.target.value)}
                     ></textarea>
                 </div>
-                <button className='mx-4 rounded-full border-blue-200 bg-green-600 p-2 justify-end'>Submit</button>
+                <button className='mx-4 rounded-full border-blue-200 bg-green-600 p-2 justify-end'
+                    type='submit'
+                    onClick={handleSubmitReview} >Submit</button>
             </form>
         </div>
     )
