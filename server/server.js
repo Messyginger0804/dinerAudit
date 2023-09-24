@@ -81,12 +81,18 @@ app.post('/api/v1/restaurants', async (req, res) => {
 })
 
 // create new review
-app.post('/api/v1/restaurants/:id/reviews'), (req, res) => {
+app.post('/api/v1/restaurants/:id/reviews'), async (req, res) => {
     try {
-        const response = db.query(`INSERT INTO reviews (restaurant_id, review, rating) VALUES ($1, $2, $3)`,
-
+        const addReview = await db.query(`INSERT INTO reviews (restaurant_id, name, review, rating) VALUES ($1, $2, $3, $4) RETURNING *`,
+            [req.params.id, req.body.reviews, req.body.rating]
         )
-        console.log(response)
+        console.log(addReview)
+        res.status(200).json({
+            status: 'OK',
+            data: {
+                review: addReview.rows[0]
+            }
+        });
     } catch (error) {
         console.error(error);
     }

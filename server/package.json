@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "backend": "node --watch server.js"
+    "backend": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
