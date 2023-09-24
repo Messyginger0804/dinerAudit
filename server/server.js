@@ -42,11 +42,13 @@ app.get('/api/v1/restaurants', async (req, res) => {
 app.get('/api/v1/restaurants/:id', async (req, res) => {
     // console.log(req.params.id)
     try {
-        const results = await db.query("SELECT * FROM restaurant WHERE id = $1", [req.params.id])
+        const restaurant = await db.query("SELECT * FROM restaurant WHERE id = $1", [req.params.id])
+        const reviews = await db.query("SELECT * FROM reviews WHERE restaurant_id = $1", [req.params.id])
         res.status(200).json({
             status: 'sucess',
             data: {
-                restaurants: results.rows[0],
+                restaurant: restaurant.rows[0],
+                reviews: reviews.rows,
             }
         });
 
@@ -77,6 +79,18 @@ app.post('/api/v1/restaurants', async (req, res) => {
         console.error(error)
     }
 })
+
+// create new review
+app.post('/api/v1/restaurants/:id/reviews'), (req, res) => {
+    try {
+        const response = db.query(`INSERT INTO reviews (restaurant_id, review, rating) VALUES ($1, $2, $3)`,
+
+        )
+        console.log(response)
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 // update a restaurant
 app.put('/api/v1/restaurants/:id', async (req, res) => {

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "backend": "node server.js && node --watch server.js"
+    "backend": "node --watch server.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "express": "^4.18.2",
     "morgan": "^1.10.0",
     "nodeman": "^1.1.2",
+    "nodemon": "^3.0.1",
     "pg": "^8.11.3",
     "pool": "^0.4.1",
     "router": "^1.3.8"

@@ -4,5 +4,8 @@
     "icons": "^1.0.0",
     "react": "^18.2.0",
     "react-icons": "^4.11.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.6"
   }
 }

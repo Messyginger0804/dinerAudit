@@ -5,6 +5,7 @@ import { RestaurantsContext } from '../context/RestaurantsConext'
 import DinerFinder from '../api/DinerFinder'
 import StarRating from '../components/StarRating'
 import Reviews from '../components/Reviews'
+import AddReviews from '../components/AddReviews'
 
 
 function DetailPage() {
@@ -15,10 +16,9 @@ function DetailPage() {
         const fetchData = async () => {
             try {
                 const response = await DinerFinder.get(`/${id}`)
-                // console.log(response)
+                console.log(response)
 
-                setSelectedRestaurant(response.data.data.restaurants)
-
+                setSelectedRestaurant(response.data.data)
             } catch (error) {
                 console.error(error)
             }
@@ -29,12 +29,13 @@ function DetailPage() {
 
     return (
         <div className=''>{selectedRestaurant && (
-            // <>
-            <div className='flex'>
-                <Reviews />
-
-            </div>
-            // {/* </> */}
+            <>
+                <div className='m-6'>
+                    <Reviews reviews={selectedRestaurant.reviews} />
+                    {console.log(selectedRestaurant.reviews)}
+                </div>
+                <AddReviews />
+            </>
         )}
         </div>
     )
