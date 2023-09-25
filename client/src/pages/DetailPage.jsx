@@ -30,9 +30,17 @@ function DetailPage() {
     return (
         <div className=''>{selectedRestaurant && (
             <>
-                <div className='m-6'>
+                <div className='flex justify-center text-center'>
+                    {/* <span>Average</span> */}
+                    <StarRating
+                        rating={selectedRestaurant.restaurant.average_rating}
+                    />
+                    <span className='ml-1'>
+                        {selectedRestaurant.restaurant.count ? `(${selectedRestaurant.restaurant.count})` : "0"}
+                    </span>
+                </div>
+                <div className=''>
                     <Reviews reviews={selectedRestaurant.reviews} />
-                    {/* {console.log(selectedRestaurant.reviews)} */}
                 </div>
                 <AddReviews />
             </>

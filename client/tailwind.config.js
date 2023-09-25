@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {},
+    // colors: {
+    //   purp: 'rgb(101, 26, 99)',
+    // }
   },
   plugins: [
     require('@tailwindcss/forms'),

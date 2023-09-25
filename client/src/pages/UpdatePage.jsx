@@ -5,7 +5,7 @@ import '../index.css'
 function UpdatePage() {
     return (
         <div>
-            <h1 className='text-center text-9xl'>Update Restaurant</h1>
+            <h1 className='text-center text-6xl'>Update Restaurant</h1>
             <UpdateRestaurant />
         </div>
     )

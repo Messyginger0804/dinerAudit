@@ -29,7 +29,7 @@ app.get('/api/v1/restaurants', async (req, res) => {
         const restaurantData = await db.query(`
         SELECT * FROM restaurant LEFT JOIN (SELECT restaurant_id, COUNT(*), TRUNC(AVG(rating),1) AS average_rating FROM reviews GROUP BY restaurant_id) reviews ON restaurant.id = reviews.restaurant_id;
         `,)
-        console.log("reviews------>", restaurantData);
+        // console.log("reviews------>", restaurantData);
         // console.log("results------>", results)
         res.status(200).json({
             status: 'success',
@@ -77,6 +77,7 @@ app.post('/api/v1/restaurants', async (req, res) => {
         INSERT INTO restaurant 
         (name, location, price_range) values ($1, $2, $3) RETURNING *`,
             [req.body.name, req.body.location, req.body.price_range])
+        console.log(results)
 
         res.status(201).json({
             status: 'success',
@@ -96,7 +97,7 @@ app.post('/api/v1/restaurants/:id/addReview', async (req, res) => {
         const addReview = await db.query(`INSERT INTO reviews (restaurant_id, name, review, rating) VALUES ($1, $2, $3, $4) RETURNING *;`,
             [req.params.id, req.body.name, req.body.review, req.body.rating]
         )
-        console.log(addReview)
+        // console.log(addReview)
         res.status(201).json({
             status: 'OK',
             data: {

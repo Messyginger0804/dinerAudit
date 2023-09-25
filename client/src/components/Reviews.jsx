@@ -4,7 +4,7 @@ import StarRating from './StarRating'
 function Reviews({ reviews }) {
     return (
         <div className='flex flex-wrap justify-center'>
-            {reviews.map((review) => {
+            {reviews?.map((review) => {
                 return (
                     <div className='mb-2' key={review.id}>
                         <div className='text-gray-400 bg-blue-600 mb-3 mr-4 h-40 w-96 p-4 overflow-y-scroll'>

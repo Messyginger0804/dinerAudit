@@ -7,7 +7,7 @@ import RestaurantLists from '../components/RestaurantLists'
 function Home() {
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <AddRestaurant />
             <RestaurantLists />
         </div>

@@ -8,7 +8,7 @@ html {
     margin: 0%;
     height: 100%;
     width: 100%;
-    background: radial-gradient(ellipse at center, rgb(202, 53, 195) 20%, whitesmoke 80%);
+    background: radial-gradient(ellipse at center, rgb(101, 26, 99) 30%, gold 70%);
     /* overflow: scroll; */
     /* text-decoration-color: whitesmoke; */
 }
