@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import '../index.css'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { RestaurantsContext } from '../context/RestaurantsConext'
 import DinerFinder from '../api/DinerFinder'
 import StarRating from '../components/StarRating'
