@@ -16,6 +16,8 @@ ALTER TABLE restaurant
 
 INSERT INTO restaurant (id, name, location, price_range) VALUES (123, 'mcdonald', 'new york', 3);
 
--- ssh -i dinerfinder.pem ubuntu@18.119.134.0
+-- ssh -i dinerfinder.pem ubuntu@3.144.102.215
 -- /home/ubuntu/apps/dinerFinder/client/dist
 -- /home/ubuntu/apps/dinerFinder/client/dist
+
+-- http://3.144.102.215/
