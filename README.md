@@ -6,7 +6,7 @@ Welcome to DinerFinder, an application that acts as a restaurant review site, al
 
 - **Project Name:** DinerFinder
 - **Front End Technologies:** Vite, React, Tailwind CSS
-- **Back End Technologies:** Node.js, PostgreSQL
+- **Back End Technologies:** Node.js, Express, Axios, PostgreSQL
 - **Database Interaction:** [node-postgres](https://node-postgres.com/)
 - **Developed By:** Jeremy Ashley
 - **GitHub Repository:** https://github.com/Messyginger0804/gugal.git
