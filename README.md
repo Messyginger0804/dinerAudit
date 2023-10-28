@@ -4,12 +4,12 @@ Welcome to DinerFinder, an application that acts as a restaurant review site, al
 
 ## Project Overview
 
-- **Project Name:** DinerFinder
-- **Front End Technologies:** Vite, React, Tailwind CSS
-- **Back End Technologies:** Node.js, Express, Axios, PostgreSQL
+- **Project Name:** [DinerFinder](http://3.144.102.215/)
+- **Front End Technologies:** [Vite](https://vitejs.dev/), [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/)
+- **Back End Technologies:** [Node.js](https://nodejs.org/en), [Express](https://nodejs.org/en), [Axios](https://axios-http.com/), [PostgreSQL](https://www.postgresqltutorial.com/)
 - **Database Interaction:** [node-postgres](https://node-postgres.com/)
-- **Developed By:** Jeremy Ashley
-- **GitHub Repository:** https://github.com/Messyginger0804/gugal.git
+- **Developed By:** [Jeremy Ashley](https://jcashleyportfolio.netlify.app/)
+- **GitHub Repository:** https://github.com/Messyginger0804/dinerAudit
 
 ## Features
 
@@ -36,28 +36,11 @@ DinerFinder utilizes various technologies:
 To experience DinerFinder and explore restaurant reviews, follow these steps:
 
 To experience Gugal and perform searches:
-visit http://3.144.102.215/
+visit [DinerFinder](http://3.144.102.215/)
 
- or follow these steps:
+1. Open a web browser and visit the application.
 
-1. Clone or download the project repository to your local machine.
-
-2. Navigate to the project directory.
-
-3. Set up the back end:
-
-   - Ensure you have PostgreSQL installed and create a database.
-   - Update the database connection details in the back-end code.
-   - Run the back end using Node.js.
-
-4. Set up the front end:
-
-   - Install project dependencies using Vite.
-   - Run the front end using Vite.
-
-5. Open a web browser and visit the application.
-
-6. Browse and add your own restaurant reviews.
+2. Browse and add your own restaurant reviews.
 
 ## Lessons Learned
 
@@ -76,6 +59,6 @@ DinerFinder is open-source and available in the associated GitHub repository. Yo
 
 ## Contact
 
-If you have any questions, feedback, or would like to connect, you can reach out via https://www.linkedin.com/in/jeremy-ashley-webdev/.
+If you have any questions, feedback, or would like to connect, you can reach out via [LinkedIn](https://www.linkedin.com/in/jeremy-ashley-webdev/).
 
 Thank you for exploring DinerFinder, and stay tuned for future updates and improvements!
